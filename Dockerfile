@@ -87,6 +87,7 @@ ADD ./logstash-forwarder.key /etc/pki/tls/private/logstash-forwarder.key
 ADD ./01-lumberjack-input.conf /etc/logstash/conf.d/01-lumberjack-input.conf
 ADD ./10-syslog.conf /etc/logstash/conf.d/10-syslog.conf
 ADD ./11-nginx.conf /etc/logstash/conf.d/11-nginx.conf
+ADD ./20-gulf.conf /etc/logstash/conf.d/20-gulf.conf
 ADD ./30-lumberjack-output.conf /etc/logstash/conf.d/30-lumberjack-output.conf
 
 # patterns
@@ -101,7 +102,7 @@ RUN chown -R logstash:logstash ${LOGSTASH_HOME}/patterns
 ADD ./start.sh /usr/local/bin/start.sh
 RUN chmod +x /usr/local/bin/start.sh
 
-EXPOSE 5601 9200 9300 5000
+EXPOSE 5601 9200 9300 5000 12201
 VOLUME /var/lib/elasticsearch
 
 CMD [ "/usr/local/bin/start.sh" ]
